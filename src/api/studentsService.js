@@ -19,3 +19,17 @@ export const addStudent=async(newStudent) => {
         return error.message
     }
 }
+
+export const updateStudent=async(id,updatedStudent)=>{
+    try{
+        console.log("Données mises à jour :",updatedStudent)
+        const response=await axios.put(
+            `${API_URL}/${id}`,updatedStudent)
+            return response.data
+    }
+    catch(error){
+        console.log("erreur"+error.message)
+        throw error
+
+    }
+}

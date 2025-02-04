@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { getAllStudents } from "../api/studentsService"
 import 'bootstrap/dist/css/bootstrap.min.css'
-export const GetAllStudents=()=>{
+export const GetAllStudents=({onEdit})=>{
     const [students,setStudents]=useState([])
 
 
@@ -38,7 +38,7 @@ export const GetAllStudents=()=>{
                         <td>{student.age}</td>
 
                         <td>
-                            <button className="btn btn-primary btn-sm me-2">Éditer</button>
+                            <button onClick={()=>{onEdit(student)}} className="btn btn-primary btn-sm me-2">Éditer</button>
                          
                         </td>
                     </tr>
