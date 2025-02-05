@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { getAllStudents } from "../api/studentsService"
 import 'bootstrap/dist/css/bootstrap.min.css'
-export const GetAllStudents=({onEdit})=>{
+export const GetAllStudents=({onEdit,onDelete})=>{
     const [students,setStudents]=useState([])
 
 
@@ -14,6 +14,15 @@ export const GetAllStudents=({onEdit})=>{
     useEffect( ()=>{
         fetchStudents()
     },[] )
+
+const handleDelete=async(id)=>{
+    if(window.confirm("Etes vous sur de supprimer cet etudiant?")){
+        await onDelete(id)
+        fetchStudents()
+
+    }
+
+}
 
    return(
     <>
@@ -39,6 +48,10 @@ export const GetAllStudents=({onEdit})=>{
 
                         <td>
                             <button onClick={()=>{onEdit(student)}} className="btn btn-primary btn-sm me-2">Éditer</button>
+                         
+                        </td>
+                        <td>
+                            <button onClick={()=>{handleDelete(student._id)}} className="btn btn-primary btn-sm me-2">Supprimer</button>
                          
                         </td>
                     </tr>

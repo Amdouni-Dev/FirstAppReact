@@ -4,6 +4,7 @@ const API_URL="http://localhost:5000/api/students"
 export const getAllStudents=async()=>{
     try {
         const response=await axios.get(API_URL)
+        console.log("----------------------",response.status)
         return response.data
     } catch (error) {
         throw error
@@ -32,4 +33,13 @@ export const updateStudent=async(id,updatedStudent)=>{
         throw error
 
     }
+}
+
+export const deleteStudent=async(id)=>{
+try {
+    const result=await axios.delete(`${API_URL}/${id}`)
+    return result.data
+} catch (error) {
+    throw error
+}
 }
