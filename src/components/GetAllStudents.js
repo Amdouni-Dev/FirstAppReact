@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { getAllStudents } from "../api/studentsService"
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Link } from "react-router-dom"
 export const GetAllStudents=({onEdit,onDelete})=>{
     const [students,setStudents]=useState([])
 
@@ -27,6 +28,7 @@ const handleDelete=async(id)=>{
    return(
     <>
     <div className="container mt-4">
+        <Link to="/addStudent" className="btn btn-warning" >Ajouter un etudiant</Link>
         <h2 className="mb-3">Liste des étudiants</h2>
         <table className="table table-bordered table-striped">
             <thead className="table-dark">

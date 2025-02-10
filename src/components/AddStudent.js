@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { addStudent } from "../api/studentsService";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useNavigate } from "react-router-dom";
 
 export const AddStudent = () => {
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
-
+const navigate=useNavigate()
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!name || !age || !email) {
@@ -27,6 +28,8 @@ export const AddStudent = () => {
                 setName("")
                 setEmail("")
                 setAge("")
+                //navigate(-1)
+                navigate("/")
             }
             else {
                 setMessage("Error when adding student")
