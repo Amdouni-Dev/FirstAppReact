@@ -7,6 +7,7 @@ import { EditStudent } from './components/EditStudent';
 import { deleteStudent } from './api/studentsService';
 import { Link, Route, Routes } from 'react-router-dom';
 import { Home } from './components/Home';
+import { EditStudentWithParams } from './components/EditStudentsWithParams';
 
 function App() {
 const [selectedStudent,setSelectedStudent]=useState(null)
@@ -58,6 +59,8 @@ try {
       <Route path="/" element={<GetAllStudents/>}  ></Route>
       <Route path="/addStudent" element={<AddStudent/>}  ></Route>
       <Route path="/home" element={<Home/>}  ></Route>
+      <Route path="/editStudent/:stID" element={<EditStudentWithParams/>}  ></Route>
+      
 
     </Routes>
      

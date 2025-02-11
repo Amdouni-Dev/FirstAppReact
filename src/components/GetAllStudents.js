@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { getAllStudents } from "../api/studentsService"
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 export const GetAllStudents=({onEdit,onDelete})=>{
     const [students,setStudents]=useState([])
 
@@ -24,6 +24,7 @@ const handleDelete=async(id)=>{
     }
 
 }
+const navigate=useNavigate()
 
    return(
     <>
@@ -49,8 +50,10 @@ const handleDelete=async(id)=>{
                         <td>{student.age}</td>
 
                         <td>
-                            <button onClick={()=>{onEdit(student)}} className="btn btn-primary btn-sm me-2">Éditer</button>
+                            {/* <button onClick={()=>{onEdit(student)}} className="btn btn-primary btn-sm me-2">Éditer</button> */}
                          
+                            <button onClick={()=>{navigate(`/editStudent/${student._id}`)}} className="btn btn-primary btn-sm me-2">Éditer</button>
+                      
                         </td>
                         <td>
                             <button onClick={()=>{handleDelete(student._id)}} className="btn btn-primary btn-sm me-2">Supprimer</button>
